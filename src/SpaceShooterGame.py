@@ -519,7 +519,7 @@ while running:
     screen.fill((8, 10, 22))
     # background stars
     for i in range(60):
-        sx = (i*47 + (now//6)) % WIDTH
+        sx = (i*47 + (now//6)) % WIDHT
         sy = (i*31 + (now//12)) % HEIGHT
         screen.set_at((sx, sy), (40,40,90))
 
@@ -544,7 +544,7 @@ while running:
     # boss alert
     if boss and now < boss_alert_until:
         a = font_big.render("BOSS INCOMING!", True, (255,80,80))
-        screen.blit(a, (WIDTH//2 - a.get_width()//2, 20 + math.sin(now/200.0)*6))
+        screen.blit(a, (WIDHT//2 - a.get_width()//2, 20 + math.sin(now/200.0)*6))
 
     draw_hud()
 
