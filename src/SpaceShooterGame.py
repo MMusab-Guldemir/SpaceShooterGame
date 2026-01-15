@@ -155,7 +155,7 @@ class Enemy:
     def __init__(self, x=None, y=None, speed=1.5, size=36, hp=1):
         self.w = size
         self.h = size
-        self.x = random.randint(20, WIDTH - 20) if x is None else x
+        self.x = random.randint(20, WIDHT - 20) if x is None else x
         self.y = -random.randint(20, 140) if y is None else y
         self.speed = speed
         self.color = (220,60,60)
@@ -188,7 +188,7 @@ class Boss:
     def __init__(self, level):
         self.w = 220
         self.h = 110
-        self.x = WIDTH//2
+        self.x = WIDHT//2
         self.y = -150
         self.speed = 0.6 + level * 0.15
         self.alive = True
@@ -208,7 +208,7 @@ class Boss:
             self.y += self.speed * (dt/16)
         else:
             # lateral oscillation once entered
-            self.x = (WIDTH//2) + math.sin(pygame.time.get_ticks()/800.0) * 200
+            self.x = (WIDHT//2) + math.sin(pygame.time.get_ticks()/800.0) * 200
     
     def draw(self, surf):
         r = self.rect()
@@ -240,7 +240,7 @@ class Boss:
 class PowerUp:
     def __init__(self, kind=None):
         self.size = 28
-        self.x = random.randint(30, WIDTH-30)
+        self.x = random.randint(30, WIDHT-30)
         self.y = -50
         self.vel = 2.4
         self.kind = random.choice(["double","slow","life"]) if kind is None else kind
@@ -317,9 +317,9 @@ def draw_hud():
     screen.blit(level_s, (12, 62))
     # cooldown bar
     cd = clamp((pygame.time.get_ticks() - player.last_shot) / max(1, player.cooldown), 0, 1)
-    pygame.draw.rect(screen, (60,60,60), (WIDTH-160, 18, 140, 12), border_radius=6)
-    pygame.draw.rect(screen, (80,200,120), (WIDTH-160, 18, int(140*cd), 12), border_radius=6)
-    screen.blit(font_small.render("Weapon CD", True, (220,220,220)), (WIDTH-160, 34))
+    pygame.draw.rect(screen, (60,60,60), (WIDHT-160, 18, 140, 12), border_radius=6)
+    pygame.draw.rect(screen, (80,200,120), (WIDHT-160, 18, int(140*cd), 12), border_radius=6)
+    screen.blit(font_small.render("Weapon CD", True, (220,220,220)), (WIDHT-160, 34))
 
 # ---------- Main loop ----------
 running = True
