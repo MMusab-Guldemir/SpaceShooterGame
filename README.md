@@ -1,2 +1,0 @@
-# SpaceShooterGame
-With Python
